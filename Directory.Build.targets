@@ -61,7 +61,7 @@
 
   <ItemGroup Condition="$(IsTest) == true">
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-    <ProjectReference Include="..\SemanticQuantity\SemanticQuantity.csproj" />
+    <ProjectReference Include="..\$(SolutionName)\$(SolutionName).csproj" />
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
