@@ -1,17 +1,21 @@
 <Project>
   <PropertyGroup>
-    <SolutionName Condition="'$(SolutionName)' == ''">$([System.IO.Path]::GetFileNameWithoutExtension($([System.IO.Directory]::GetFiles("$(MSBuildThisFileDirectory)", "*.sln")[0])))</SolutionName>
-    <SolutionDirectory Condition="'$(SolutionDirectory)' == ''">$([System.IO.Path]::GetDirectoryName($([System.IO.Directory]::GetFiles("$(MSBuildThisFileDirectory)", "*.sln")[0])))</SolutionDirectory>
+    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <SolutionPath>$([System.IO.Path]::GetFullPath($([System.IO.Directory]::GetFiles("$(MSBuildThisFileDirectory)", "*.sln")[0])))</SolutionPath>
+    <SolutionName>$([System.IO.Path]::GetFileNameWithoutExtension($(SolutionPath)))</SolutionName>
+    <SolutionDirectory>$([System.IO.Path]::GetDirectoryName($(SolutionPath)))</SolutionDirectory>
+    
     <Authors>$([System.IO.File]::ReadAllText($([MSBuild]::GetPathOfFileAbove("AUTHORS"))))</Authors>
     <Version>$([System.IO.File]::ReadAllText($([MSBuild]::GetPathOfFileAbove("VERSION"))))</Version>
     <Description>$([System.IO.File]::ReadAllText($([MSBuild]::GetPathOfFileAbove("DESCRIPTION"))))</Description>
+    
     <NamespacePrefix>$(Authors.Replace(" ", ""))</NamespacePrefix>
     <NamespaceSuffix>$(MSBuildProjectName.Replace(" ", ""))</NamespaceSuffix>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NoWarn>CA1724;CA1034;CA1000;</NoWarn>
-    <TargetFramework>net8.0</TargetFramework>
-    <IsPackable>False</IsPackable>
+    <EnablePackageValidation>True</EnablePackageValidation>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 </Project>

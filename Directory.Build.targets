@@ -1,9 +1,9 @@
 <Project>
-  <PropertyGroup>
+    <PropertyGroup>
     <IsPrerelease Condition="$(Version.Contains('-'))">True</IsPrerelease>
-    <IsExecutable Condition="$(OutputType) == exe">True</IsExecutable>
+    <IsExecutable Condition="$(OutputType) == 'exe'">True</IsExecutable>
     <IsTest Condition="$(IsTestProject) == true">True</IsTest>
-    <IsLibrary Condition="$(IsExecutable) != true And $(IsTest) != true"></IsLibrary>
+    <IsLibrary Condition="'$(IsExecutable)$(IsTest)' == ''">True</IsLibrary>
     <IsPrimaryProject Condition="$(MSBuildProjectName) == '$(SolutionName)'">True</IsPrimaryProject>
   </PropertyGroup>
 
@@ -12,21 +12,23 @@
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest-all</AnalysisLevel>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <EnablePackageValidation>True</EnablePackageValidation>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(IsTest) == true">
     <RootNamespace>Test</RootNamespace>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <AnalysisLevel>latest</AnalysisLevel>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-    <EnablePackageValidation>False</EnablePackageValidation>
     <NoWarn>$(NoWarn);CS1591;CA2225;</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(IsLibrary) == true">
-    <TargetFramework>net7.0</TargetFramework>
+    <LangVersion>11.0</LangVersion>
     <IsPackable>True</IsPackable>
+    <EnablePackageValidation>True</EnablePackageValidation>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(IsLibrary) != true">
+    <IsPackable>False</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(IsPrerelease) == true">
@@ -45,8 +47,10 @@
 
   <ItemGroup Condition="$(IsTest) != true">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
+    <InternalsVisibleTo Include="$(RootNamespace).Test" />
+    <InternalsVisibleTo Include="Test" />
   </ItemGroup>
-
+  
   <ItemGroup Condition="$(IsPrimaryProject) == true">
     <None Include="..\LICENSE" Pack="True" PackagePath="\" />
     <None Include="..\README.md" Pack="True" PackagePath="\"/>
@@ -56,11 +60,12 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(IsTest) == true">
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+    <ProjectReference Include="..\SemanticQuantity\SemanticQuantity.csproj" />
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
-    <ProjectReference Condition="Exists('$(SolutionDirectory)\$(SolutionName)\$(SolutionName).csproj')" Include="$(SolutionDirectory)\$(SolutionName)\$(SolutionName).csproj" />
-    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
+
 </Project>
