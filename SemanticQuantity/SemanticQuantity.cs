@@ -16,43 +16,43 @@ public record SemanticQuantity<TStorage>(TStorage BaseQuantity)
 
 	protected static TResult Multiply<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.BaseQuantity * other.BaseQuantity);
+	}
+
+	protected static TResult Multiply<TResult>(SemanticQuantity<TStorage> self, TStorage other)
+	{
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
+		return Create<TResult>(self.BaseQuantity * other);
 	}
 
 	protected static TResult Divide<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.BaseQuantity / other.BaseQuantity);
+	}
+
+	protected static TResult Divide<TResult>(SemanticQuantity<TStorage> self, TStorage other)
+	{
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
+		return Create<TResult>(self.BaseQuantity / other);
 	}
 
 	protected static TResult Add<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.BaseQuantity + other.BaseQuantity);
 	}
 
 	protected static TResult Subtract<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
+		ArgumentNullException.ThrowIfNull(self);
+		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.BaseQuantity - other.BaseQuantity);
-	}
-
-	protected static TResult Multiply<TResult>(SemanticQuantity<TStorage> self, TStorage other)
-	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
-		return Create<TResult>(self.BaseQuantity * other);
-	}
-
-	protected static TResult Divide<TResult>(SemanticQuantity<TStorage> self, TStorage other)
-	{
-		ArgumentNullException.ThrowIfNull(self, nameof(self));
-		ArgumentNullException.ThrowIfNull(other, nameof(other));
-		return Create<TResult>(self.BaseQuantity / other);
 	}
 }
