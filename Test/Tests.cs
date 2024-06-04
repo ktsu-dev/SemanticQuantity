@@ -14,9 +14,11 @@ public class Tests
 		, IDivisionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, TStorage>
 		, IAdditionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, LinearDistance<TStorage>>
 		, ISubtractionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, LinearDistance<TStorage>>
+		, IUnaryNegationOperators<LinearDistance<TStorage>, LinearDistance<TStorage>>
 		where TStorage : INumber<TStorage>
 	{
 		public static LinearDistance<TStorage> operator +(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Add<LinearDistance<TStorage>>(left, right);
+		public static LinearDistance<TStorage> operator -(LinearDistance<TStorage> value) => Negate<LinearDistance<TStorage>>(value);
 		public static LinearDistance<TStorage> operator -(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Subtract<LinearDistance<TStorage>>(left, right);
 		public static LinearDistance<TStorage> operator *(LinearDistance<TStorage> left, TStorage right) => Multiply<LinearDistance<TStorage>>(left, right);
 		public static Area<TStorage> operator *(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Multiply<Area<TStorage>>(left, right);
@@ -128,5 +130,13 @@ public class Tests
 		Assert.AreEqual(0, calculatedDistance.BaseQuantity);
 		Assert.AreEqual(0, calculatedArea.BaseQuantity);
 		Assert.AreEqual(0, calculatedVolume.BaseQuantity);
+	}
+
+	[TestMethod]
+	public void TestNegation()
+	{
+		var distance = new LinearDistance<int>(5);
+		var negatedDistance = -distance;
+		Assert.AreEqual(-5, negatedDistance.BaseQuantity);
 	}
 }
