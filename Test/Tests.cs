@@ -7,63 +7,29 @@ using ktsu.io.SemanticQuantity;
 public class Tests
 {
 	public record LinearDistance<TStorage>(TStorage BaseQuantity)
-		: SemanticQuantity<TStorage>(BaseQuantity)
-		, IMultiplyOperators<LinearDistance<TStorage>, TStorage, LinearDistance<TStorage>>
+		: SemanticQuantity<LinearDistance<TStorage>, TStorage>(BaseQuantity)
 		, IMultiplyOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, Area<TStorage>>
-		, IDivisionOperators<LinearDistance<TStorage>, TStorage, LinearDistance<TStorage>>
-		, IDivisionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, TStorage>
-		, IAdditionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, LinearDistance<TStorage>>
-		, ISubtractionOperators<LinearDistance<TStorage>, LinearDistance<TStorage>, LinearDistance<TStorage>>
-		, IUnaryNegationOperators<LinearDistance<TStorage>, LinearDistance<TStorage>>
 		where TStorage : INumber<TStorage>
 	{
-		public static LinearDistance<TStorage> operator +(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Add<LinearDistance<TStorage>>(left, right);
-		public static LinearDistance<TStorage> operator -(LinearDistance<TStorage> value) => Negate<LinearDistance<TStorage>>(value);
-		public static LinearDistance<TStorage> operator -(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Subtract<LinearDistance<TStorage>>(left, right);
-		public static LinearDistance<TStorage> operator *(LinearDistance<TStorage> left, TStorage right) => Multiply<LinearDistance<TStorage>>(left, right);
 		public static Area<TStorage> operator *(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Multiply<Area<TStorage>>(left, right);
-		public static LinearDistance<TStorage> operator /(LinearDistance<TStorage> left, TStorage right) => Divide<LinearDistance<TStorage>>(left, right);
-		public static TStorage operator /(LinearDistance<TStorage> left, LinearDistance<TStorage> right) => Divide<TStorage>(left, right);
 	}
 
-	public record Area<TStorage>(TStorage BaseQuantity)
-		: SemanticQuantity<TStorage>(BaseQuantity)
-		, IMultiplyOperators<Area<TStorage>, TStorage, Area<TStorage>>
+	public record Area<TStorage>(TStorage BaseQuantity) : SemanticQuantity<Area<TStorage>, TStorage>(BaseQuantity)
 		, IMultiplyOperators<Area<TStorage>, LinearDistance<TStorage>, Volume<TStorage>>
-		, IDivisionOperators<Area<TStorage>, TStorage, Area<TStorage>>
 		, IDivisionOperators<Area<TStorage>, LinearDistance<TStorage>, LinearDistance<TStorage>>
-		, IDivisionOperators<Area<TStorage>, Area<TStorage>, TStorage>
-		, IAdditionOperators<Area<TStorage>, Area<TStorage>, Area<TStorage>>
-		, ISubtractionOperators<Area<TStorage>, Area<TStorage>, Area<TStorage>>
 		where TStorage : INumber<TStorage>
 	{
-		public static Area<TStorage> operator +(Area<TStorage> left, Area<TStorage> right) => Add<Area<TStorage>>(left, right);
-		public static Area<TStorage> operator -(Area<TStorage> left, Area<TStorage> right) => Subtract<Area<TStorage>>(left, right);
-		public static Area<TStorage> operator *(Area<TStorage> left, TStorage right) => Multiply<Area<TStorage>>(left, right);
 		public static Volume<TStorage> operator *(Area<TStorage> left, LinearDistance<TStorage> right) => Multiply<Volume<TStorage>>(left, right);
-		public static Area<TStorage> operator /(Area<TStorage> left, TStorage right) => Divide<Area<TStorage>>(left, right);
 		public static LinearDistance<TStorage> operator /(Area<TStorage> left, LinearDistance<TStorage> right) => Divide<LinearDistance<TStorage>>(left, right);
-		public static TStorage operator /(Area<TStorage> left, Area<TStorage> right) => Divide<TStorage>(left, right);
 	}
 
-	public record Volume<TStorage>(TStorage BaseQuantity)
-		: SemanticQuantity<TStorage>(BaseQuantity)
-		, IMultiplyOperators<Volume<TStorage>, TStorage, Volume<TStorage>>
-		, IDivisionOperators<Volume<TStorage>, TStorage, Area<TStorage>>
+	public record Volume<TStorage>(TStorage BaseQuantity) : SemanticQuantity<Volume<TStorage>, TStorage>(BaseQuantity)
 		, IDivisionOperators<Volume<TStorage>, LinearDistance<TStorage>, Area<TStorage>>
 		, IDivisionOperators<Volume<TStorage>, Area<TStorage>, LinearDistance<TStorage>>
-		, IDivisionOperators<Volume<TStorage>, Volume<TStorage>, TStorage>
-		, IAdditionOperators<Volume<TStorage>, Volume<TStorage>, Volume<TStorage>>
-		, ISubtractionOperators<Volume<TStorage>, Volume<TStorage>, Volume<TStorage>>
 		where TStorage : INumber<TStorage>
 	{
-		public static Volume<TStorage> operator +(Volume<TStorage> left, Volume<TStorage> right) => Add<Volume<TStorage>>(left, right);
-		public static Volume<TStorage> operator -(Volume<TStorage> left, Volume<TStorage> right) => Subtract<Volume<TStorage>>(left, right);
-		public static Volume<TStorage> operator *(Volume<TStorage> left, TStorage right) => Multiply<Volume<TStorage>>(left, right);
 		public static Area<TStorage> operator /(Volume<TStorage> left, LinearDistance<TStorage> right) => Divide<Area<TStorage>>(left, right);
 		public static LinearDistance<TStorage> operator /(Volume<TStorage> left, Area<TStorage> right) => Divide<LinearDistance<TStorage>>(left, right);
-		public static TStorage operator /(Volume<TStorage> left, Volume<TStorage> right) => Divide<TStorage>(left, right);
-		public static Area<TStorage> operator /(Volume<TStorage> left, TStorage right) => Divide<Area<TStorage>>(left, right);
 	}
 
 	[TestMethod]

@@ -9,13 +9,16 @@ public abstract record SemanticQuantity<TStorage>(TStorage Quantity)
 
 public abstract record SemanticQuantity<TSelf, TStorage>(TStorage Quantity)
 	: SemanticQuantity<TStorage>(Quantity)
-	, IAdditionOperators<TSelf, TSelf, TSelf>
-	, ISubtractionOperators<TSelf, TSelf, TSelf>
-	, IUnaryNegationOperators<TSelf, TSelf>
+	, IAdditionOperators<SemanticQuantity<TSelf, TStorage>, TSelf, TSelf>
+	, ISubtractionOperators<SemanticQuantity<TSelf, TStorage>, TSelf, TSelf>
+	, IMultiplyOperators<SemanticQuantity<TSelf, TStorage>, TStorage, TSelf>
+	, IDivisionOperators<SemanticQuantity<TSelf, TStorage>, TStorage, TSelf>
+	, IDivisionOperators<SemanticQuantity<TSelf, TStorage>, SemanticQuantity<TSelf, TStorage>, TStorage>
+	, IUnaryNegationOperators<SemanticQuantity<TSelf, TStorage>, TSelf>
 	where TSelf : SemanticQuantity<TSelf, TStorage>
 	where TStorage : INumber<TStorage>
 {
-	public static TQuantity Create<TQuantity>(TStorage quantity)
+	protected static TQuantity Create<TQuantity>(TStorage quantity)
 	{
 		var outType = typeof(TQuantity);
 		var inType = typeof(TStorage);
@@ -24,55 +27,58 @@ public abstract record SemanticQuantity<TSelf, TStorage>(TStorage Quantity)
 			: Activator.CreateInstance(outType, quantity)!);
 	}
 
-	protected static TResult Multiply<TResult>(TSelf self, SemanticQuantity<TStorage> other)
+	protected static TResult Multiply<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity * other.Quantity);
 	}
 
-	protected static TResult Multiply<TResult>(TSelf self, TStorage other)
+	protected static TResult Multiply<TResult>(SemanticQuantity<TSelf, TStorage> self, TStorage other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity * other);
 	}
 
-	protected static TResult Divide<TResult>(TSelf self, SemanticQuantity<TStorage> other)
+	protected static TResult Divide<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity / other.Quantity);
 	}
 
-	protected static TResult Divide<TResult>(TSelf self, TStorage other)
+	protected static TResult Divide<TResult>(SemanticQuantity<TSelf, TStorage> self, TStorage other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity / other);
 	}
 
-	protected static TResult Add<TResult>(TSelf self, TSelf other)
+	protected static TResult Add<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity + other.Quantity);
 	}
 
-	protected static TResult Subtract<TResult>(TSelf self, TSelf other)
+	protected static TResult Subtract<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return Create<TResult>(self.Quantity - other.Quantity);
 	}
 
-	protected static TResult Negate<TResult>(TSelf self)
+	protected static TResult Negate<TResult>(SemanticQuantity<TSelf, TStorage> self)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		return Create<TResult>(-self.Quantity);
 	}
 
-	static TSelf IAdditionOperators<TSelf, TSelf, TSelf>.operator +(TSelf left, TSelf right) => Add<TSelf>(left, right);
-	static TSelf ISubtractionOperators<TSelf, TSelf, TSelf>.operator -(TSelf left, TSelf right) => Subtract<TSelf>(left, right);
-	static TSelf IUnaryNegationOperators<TSelf, TSelf>.operator -(TSelf value) => Negate<TSelf>(value);
+	public static TSelf operator +(SemanticQuantity<TSelf, TStorage> left, TSelf right) => Add<TSelf>(left, right);
+	public static TSelf operator -(SemanticQuantity<TSelf, TStorage> left, TSelf right) => Subtract<TSelf>(left, right);
+	public static TSelf operator -(SemanticQuantity<TSelf, TStorage> value) => Negate<TSelf>(value);
+	public static TSelf operator *(SemanticQuantity<TSelf, TStorage> left, TStorage right) => Multiply<TSelf>(left, right);
+	public static TSelf operator /(SemanticQuantity<TSelf, TStorage> left, TStorage right) => Divide<TSelf>(left, right);
+	public static TStorage operator /(SemanticQuantity<TSelf, TStorage> left, SemanticQuantity<TSelf, TStorage> right) => Divide<TStorage>(left, (TSelf)right);
 }
