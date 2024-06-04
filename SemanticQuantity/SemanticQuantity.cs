@@ -91,4 +91,6 @@ public abstract record SemanticQuantity<TSelf, TStorage>
 	public static TSelf operator *(SemanticQuantity<TSelf, TStorage> left, TStorage right) => Multiply<TSelf>(left, right);
 	public static TSelf operator /(SemanticQuantity<TSelf, TStorage> left, TStorage right) => Divide<TSelf>(left, right);
 	public static TStorage operator /(SemanticQuantity<TSelf, TStorage> left, SemanticQuantity<TSelf, TStorage> right) => DivideToStorage(left, right);
+
+	public static TSelf Create(TStorage quantity) => new TSelf() with { Quantity = quantity };
 }
