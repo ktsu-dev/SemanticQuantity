@@ -4,17 +4,19 @@ namespace ktsu.io.SemanticQuantity;
 
 using System.Numerics;
 
-public abstract record SemanticQuantity<TStorage>
+public record SemanticQuantity<TStorage>
 	where TStorage : INumber<TStorage>
 {
 	public TStorage Quantity { get; protected set; } = TStorage.Zero;
+
+	protected SemanticQuantity() { }
 
 	public static TQuantity Create<TQuantity>(TStorage quantity)
 		where TQuantity : SemanticQuantity<TStorage>, new()
 		=> new TQuantity() with { Quantity = quantity };
 }
 
-public abstract record SemanticQuantity<TSelf, TStorage>
+public record SemanticQuantity<TSelf, TStorage>
 	: SemanticQuantity<TStorage>
 	, IAdditionOperators<SemanticQuantity<TSelf, TStorage>, TSelf, TSelf>
 	, ISubtractionOperators<SemanticQuantity<TSelf, TStorage>, TSelf, TSelf>
@@ -25,6 +27,8 @@ public abstract record SemanticQuantity<TSelf, TStorage>
 	where TSelf : SemanticQuantity<TSelf, TStorage>, new()
 	where TStorage : INumber<TStorage>
 {
+	protected SemanticQuantity() { }
+
 	public static TResult Multiply<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
