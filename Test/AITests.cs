@@ -9,7 +9,7 @@ public record LengthDouble : SemanticQuantity<LengthDouble, double>;
 public record LengthInt : SemanticQuantity<LengthInt, int>;
 
 [TestClass]
-public class SemanticQuantityTests
+public class AITests
 {
 	#region BigInteger Tests
 
