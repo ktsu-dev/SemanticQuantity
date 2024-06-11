@@ -29,7 +29,7 @@ public record SemanticQuantity<TSelf, TStorage>
 {
 	protected SemanticQuantity() { }
 
-	public static TResult Multiply<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
+	public static TResult Multiply<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -37,7 +37,7 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity * other.Quantity)!;
 	}
 
-	public static TResult Multiply<TResult>(SemanticQuantity<TSelf, TStorage> self, TStorage other)
+	public static TResult Multiply<TResult>(SemanticQuantity<TStorage> self, TStorage other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -45,7 +45,7 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity * other)!;
 	}
 
-	public static TResult Divide<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
+	public static TResult Divide<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -53,7 +53,7 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity / other.Quantity)!;
 	}
 
-	public static TResult Divide<TResult>(SemanticQuantity<TSelf, TStorage> self, TStorage other)
+	public static TResult Divide<TResult>(SemanticQuantity<TStorage> self, TStorage other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -61,14 +61,14 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity / other)!;
 	}
 
-	public static TStorage DivideToStorage(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
+	public static TStorage DivideToStorage(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 	{
 		ArgumentNullException.ThrowIfNull(self);
 		ArgumentNullException.ThrowIfNull(other);
 		return self.Quantity / other.Quantity;
 	}
 
-	public static TResult Add<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
+	public static TResult Add<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -76,7 +76,7 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity + other.Quantity)!;
 	}
 
-	public static TResult Subtract<TResult>(SemanticQuantity<TSelf, TStorage> self, SemanticQuantity<TStorage> other)
+	public static TResult Subtract<TResult>(SemanticQuantity<TStorage> self, SemanticQuantity<TStorage> other)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
@@ -84,7 +84,7 @@ public record SemanticQuantity<TSelf, TStorage>
 		return Create<TResult>(self.Quantity - other.Quantity)!;
 	}
 
-	public static TResult Negate<TResult>(SemanticQuantity<TSelf, TStorage> self)
+	public static TResult Negate<TResult>(SemanticQuantity<TStorage> self)
 		where TResult : SemanticQuantity<TStorage>, new()
 	{
 		ArgumentNullException.ThrowIfNull(self);
