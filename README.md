@@ -1,5 +1,11 @@
 # ktsu.io.SemanticQuantity
 
+![NuGet Version](https://img.shields.io/nuget/v/ktsu.io.SemanticQuantity?logo=nuget&label=stable)
+![NuGet Version](https://img.shields.io/nuget/vpre/ktsu.io.SemanticQuantity?logo=nuget&label=dev)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ktsu-io/SemanticQuantity?label=commits)
+![GitHub branch status](https://img.shields.io/github/checks-status/ktsu-io/SemanticQuantity/main)
+![Sonar Coverage](https://img.shields.io/sonar/coverage/ktsu-io_SemanticQuantity?server=https%3A%2F%2Fsonarcloud.io)
+
 The `SemanticQuantity` library provides a flexible and type-safe way to represent quantities with specific semantic meanings. It supports a wide range of numeric types and provides a robust set of functionalities for arithmetic operations and comparisons.
 
 ## Features
