@@ -1,7 +1,7 @@
 namespace Test;
 
 using System.Numerics;
-using ktsu.io.SemanticQuantity;
+using ktsu.SemanticQuantity;
 
 [TestClass]
 public class Tests

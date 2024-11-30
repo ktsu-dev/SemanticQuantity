@@ -1,7 +1,7 @@
 namespace Test;
 
 using System.Numerics;
-using ktsu.io.SemanticQuantity;
+using ktsu.SemanticQuantity;
 
 public record LengthBigInt : SemanticQuantity<LengthBigInt, BigInteger>;
 public record LengthFloat : SemanticQuantity<LengthFloat, float>;

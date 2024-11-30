@@ -1,14 +1,14 @@
-# ktsu.io.SemanticQuantity
+# ktsu.SemanticQuantity
 
-![NuGet Version](https://img.shields.io/nuget/v/ktsu.io.SemanticQuantity?logo=nuget&label=stable)
-![NuGet Version](https://img.shields.io/nuget/vpre/ktsu.io.SemanticQuantity?logo=nuget&label=dev)
+![NuGet Version](https://img.shields.io/nuget/v/ktsu.SemanticQuantity?logo=nuget&label=stable)
+![NuGet Version](https://img.shields.io/nuget/vpre/ktsu.SemanticQuantity?logo=nuget&label=dev)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ktsu-io/SemanticQuantity?label=commits)
 ![GitHub branch status](https://img.shields.io/github/checks-status/ktsu-io/SemanticQuantity/main)
 ![Sonar Coverage](https://img.shields.io/sonar/coverage/ktsu-io_SemanticQuantity?server=https%3A%2F%2Fsonarcloud.io)
 
 ## Overview
 
-The `ktsu.io.SemanticQuantity` library provides a base class for creating semantic quantities with a specific storage type. This allows for defining quantities with meaningful semantics, such as length, mass, time, etc., and performing arithmetic operations on them while preserving their semantics.
+The `ktsu.SemanticQuantity` library provides a base class for creating semantic quantities with a specific storage type. This allows for defining quantities with meaningful semantics, such as length, mass, time, etc., and performing arithmetic operations on them while preserving their semantics.
 
 ## Features
 
@@ -31,16 +31,16 @@ The `ktsu.io.SemanticQuantity` library provides a base class for creating semant
 
 ## Installation
 
-To install the `ktsu.io.SemanticQuantity` library, you can use the .NET CLI:
+To install the `ktsu.SemanticQuantity` library, you can use the .NET CLI:
 
 ```sh
-dotnet add package ktsu.io.SemanticQuantity
+dotnet add package ktsu.SemanticQuantity
 ```
 
 Or, add the package reference directly in your project file:
 
 ```xml
-<PackageReference Include="ktsu.io.SemanticQuantity" Version="1.0.0" />
+<PackageReference Include="ktsu.SemanticQuantity" Version="1.0.0" />
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ Or, add the package reference directly in your project file:
 You can create a semantic quantity from various numeric types using the `Create` method:
 
 ```csharp
-using ktsu.io.SemanticQuantity;
+using ktsu.SemanticQuantity;
 using System.Numerics;
 
 // Define a specific semantic quantity type
