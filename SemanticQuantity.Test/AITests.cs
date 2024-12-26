@@ -14,7 +14,7 @@ public class AITests
 	#region BigInteger Tests
 
 	[TestMethod]
-	public void CreateBigInt_ShouldInitializeQuantity()
+	public void CreateBigIntShouldInitializeQuantity()
 	{
 		var expected = new BigInteger(10);
 		var length = LengthBigInt.Create(expected);
@@ -22,7 +22,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void AddBigInt_ShouldReturnCorrectResult()
+	public void AddBigIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthBigInt.Create(new BigInteger(5));
 		var length2 = LengthBigInt.Create(new BigInteger(10));
@@ -31,7 +31,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void SubtractBigInt_ShouldReturnCorrectResult()
+	public void SubtractBigIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthBigInt.Create(new BigInteger(10));
 		var length2 = LengthBigInt.Create(new BigInteger(5));
@@ -40,7 +40,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void NegateBigInt_ShouldReturnCorrectResult()
+	public void NegateBigIntShouldReturnCorrectResult()
 	{
 		var length = LengthBigInt.Create(new BigInteger(5));
 		var result = -length;
@@ -48,7 +48,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyBigInt_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void MultiplyBigIntWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthBigInt.Create(new BigInteger(5));
 		var multiplier = SemanticQuantity<BigInteger>.Create<LengthBigInt>(new BigInteger(2));
@@ -57,7 +57,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyBigInt_WithStorageType_ShouldReturnCorrectResult()
+	public void MultiplyBigIntWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthBigInt.Create(new BigInteger(5));
 		var multiplier = new BigInteger(2);
@@ -66,7 +66,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideBigInt_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void DivideBigIntWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthBigInt.Create(new BigInteger(10));
 		var divisor = SemanticQuantity<BigInteger>.Create<LengthBigInt>(new BigInteger(2));
@@ -75,7 +75,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideBigInt_WithStorageType_ShouldReturnCorrectResult()
+	public void DivideBigIntWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthBigInt.Create(new BigInteger(10));
 		var divisor = new BigInteger(2);
@@ -84,7 +84,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideToStorageBigInt_ShouldReturnCorrectResult()
+	public void DivideToStorageBigIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthBigInt.Create(new BigInteger(10));
 		var length2 = LengthBigInt.Create(new BigInteger(2));
@@ -97,7 +97,7 @@ public class AITests
 	#region Float Tests
 
 	[TestMethod]
-	public void CreateFloat_ShouldInitializeQuantity()
+	public void CreateFloatShouldInitializeQuantity()
 	{
 		float expected = 10f;
 		var length = LengthFloat.Create(expected);
@@ -105,7 +105,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void AddFloat_ShouldReturnCorrectResult()
+	public void AddFloatShouldReturnCorrectResult()
 	{
 		var length1 = LengthFloat.Create(5f);
 		var length2 = LengthFloat.Create(10f);
@@ -114,7 +114,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void SubtractFloat_ShouldReturnCorrectResult()
+	public void SubtractFloatShouldReturnCorrectResult()
 	{
 		var length1 = LengthFloat.Create(10f);
 		var length2 = LengthFloat.Create(5f);
@@ -123,7 +123,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void NegateFloat_ShouldReturnCorrectResult()
+	public void NegateFloatShouldReturnCorrectResult()
 	{
 		var length = LengthFloat.Create(5f);
 		var result = -length;
@@ -131,7 +131,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyFloat_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void MultiplyFloatWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthFloat.Create(5f);
 		var multiplier = SemanticQuantity<float>.Create<LengthFloat>(2f);
@@ -140,7 +140,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyFloat_WithStorageType_ShouldReturnCorrectResult()
+	public void MultiplyFloatWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthFloat.Create(5f);
 		float multiplier = 2f;
@@ -149,7 +149,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideFloat_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void DivideFloatWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthFloat.Create(10f);
 		var divisor = SemanticQuantity<float>.Create<LengthFloat>(2f);
@@ -158,7 +158,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideFloat_WithStorageType_ShouldReturnCorrectResult()
+	public void DivideFloatWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthFloat.Create(10f);
 		float divisor = 2f;
@@ -167,7 +167,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideToStorageFloat_ShouldReturnCorrectResult()
+	public void DivideToStorageFloatShouldReturnCorrectResult()
 	{
 		var length1 = LengthFloat.Create(10f);
 		var length2 = LengthFloat.Create(2f);
@@ -180,7 +180,7 @@ public class AITests
 	#region Double Tests
 
 	[TestMethod]
-	public void CreateDouble_ShouldInitializeQuantity()
+	public void CreateDoubleShouldInitializeQuantity()
 	{
 		double expected = 10.0;
 		var length = LengthDouble.Create(expected);
@@ -188,7 +188,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void AddDouble_ShouldReturnCorrectResult()
+	public void AddDoubleShouldReturnCorrectResult()
 	{
 		var length1 = LengthDouble.Create(5.0);
 		var length2 = LengthDouble.Create(10.0);
@@ -197,7 +197,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void SubtractDouble_ShouldReturnCorrectResult()
+	public void SubtractDoubleShouldReturnCorrectResult()
 	{
 		var length1 = LengthDouble.Create(10.0);
 		var length2 = LengthDouble.Create(5.0);
@@ -206,7 +206,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void NegateDouble_ShouldReturnCorrectResult()
+	public void NegateDoubleShouldReturnCorrectResult()
 	{
 		var length = LengthDouble.Create(5.0);
 		var result = -length;
@@ -214,7 +214,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyDouble_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void MultiplyDoubleWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthDouble.Create(5.0);
 		var multiplier = SemanticQuantity<double>.Create<LengthDouble>(2.0);
@@ -223,7 +223,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyDouble_WithStorageType_ShouldReturnCorrectResult()
+	public void MultiplyDoubleWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthDouble.Create(5.0);
 		double multiplier = 2.0;
@@ -232,7 +232,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideDouble_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void DivideDoubleWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthDouble.Create(10.0);
 		var divisor = SemanticQuantity<double>.Create<LengthDouble>(2.0);
@@ -241,7 +241,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideDouble_WithStorageType_ShouldReturnCorrectResult()
+	public void DivideDoubleWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthDouble.Create(10.0);
 		double divisor = 2.0;
@@ -250,7 +250,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideToStorageDouble_ShouldReturnCorrectResult()
+	public void DivideToStorageDoubleShouldReturnCorrectResult()
 	{
 		var length1 = LengthDouble.Create(10.0);
 		var length2 = LengthDouble.Create(2.0);
@@ -263,7 +263,7 @@ public class AITests
 	#region Int Tests
 
 	[TestMethod]
-	public void CreateInt_ShouldInitializeQuantity()
+	public void CreateIntShouldInitializeQuantity()
 	{
 		int expected = 10;
 		var length = LengthInt.Create(expected);
@@ -271,7 +271,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void AddInt_ShouldReturnCorrectResult()
+	public void AddIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthInt.Create(5);
 		var length2 = LengthInt.Create(10);
@@ -280,7 +280,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void SubtractInt_ShouldReturnCorrectResult()
+	public void SubtractIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthInt.Create(10);
 		var length2 = LengthInt.Create(5);
@@ -289,7 +289,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void NegateInt_ShouldReturnCorrectResult()
+	public void NegateIntShouldReturnCorrectResult()
 	{
 		var length = LengthInt.Create(5);
 		var result = -length;
@@ -297,7 +297,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyInt_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void MultiplyIntWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthInt.Create(5);
 		var multiplier = SemanticQuantity<int>.Create<LengthInt>(2);
@@ -306,7 +306,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void MultiplyInt_WithStorageType_ShouldReturnCorrectResult()
+	public void MultiplyIntWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthInt.Create(5);
 		int multiplier = 2;
@@ -315,7 +315,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideInt_WithSemanticQuantity_ShouldReturnCorrectResult()
+	public void DivideIntWithSemanticQuantityShouldReturnCorrectResult()
 	{
 		var length = LengthInt.Create(10);
 		var divisor = SemanticQuantity<int>.Create<LengthInt>(2);
@@ -324,7 +324,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideInt_WithStorageType_ShouldReturnCorrectResult()
+	public void DivideIntWithStorageTypeShouldReturnCorrectResult()
 	{
 		var length = LengthInt.Create(10);
 		int divisor = 2;
@@ -333,7 +333,7 @@ public class AITests
 	}
 
 	[TestMethod]
-	public void DivideToStorageInt_ShouldReturnCorrectResult()
+	public void DivideToStorageIntShouldReturnCorrectResult()
 	{
 		var length1 = LengthInt.Create(10);
 		var length2 = LengthInt.Create(2);
