@@ -1,3 +1,14 @@
+## v1.1.0 (minor)
+
+Changes since v1.0.0:
+
+- Add automation scripts for metadata management and versioning ([@matt-edmondson](https://github.com/matt-edmondson))
+- Add LICENSE template ([@matt-edmondson](https://github.com/matt-edmondson))
+- Refactor test project and update method names ([@matt-edmondson](https://github.com/matt-edmondson))
+- Renamed metadata files ([@matt-edmondson](https://github.com/matt-edmondson))
+- Replace LICENSE file with LICENSE.md and update copyright information ([@matt-edmondson](https://github.com/matt-edmondson))
+- Update namespace to ktsu.SemanticQuantity ([@matt-edmondson](https://github.com/matt-edmondson))
+
 ## v1.0.15 (patch)
 
 Changes since v1.0.15-pre.29:
