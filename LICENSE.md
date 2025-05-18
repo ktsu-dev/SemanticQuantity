@@ -1,6 +1,6 @@
 MIT License
 
-https://github.com/ktsu-dev/ktsu-dev/SemanticQuantity
+https://github.com/ktsu-dev/SemanticQuantity
 
 Copyright (c) 2023-2025 ktsu-dev
 
